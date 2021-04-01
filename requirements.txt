@@ -1,0 +1,6 @@
+dotmap
+faiss-gpu==1.7.0
+scikit-learn
+tensorboard
+tqdm
+

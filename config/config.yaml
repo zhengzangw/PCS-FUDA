@@ -1,0 +1,52 @@
+# This file illustrate keys' meaning in configs
+# This file is not a training config
+# training conig should be `xxx.json`
+# some default value are defined in `run.py:adjust_config`
+
+debug: false # Disable debug mode
+cuda: true # Use cuda
+gpu_device: null # use all available devices
+seed: 1337 # random seed
+exp_base: exps # directory that `experiments` folders will be created and experiment folder will be created under `{exp_base}/experiments/{exp_name}/{exp_id}`
+exp_name: office # experiment name
+exp_id: "1:D->A" # experiment id
+pretrained_exp_dir: null # folder where checkpoints can be loaded
+num_epochs: 500 # max number of epochs to run
+steps_epoch: 100 # number of iterations per epoch
+validate_freq: 1 # validation frequency
+copy_checkpoint_freq: 50 # frequency to copy the checkpoint
+data_params:
+  name: office # name of dataset to use
+  source: dslr # source domain
+  target: amazon # target domain
+  aug_src: aug_0 # augmentation for source
+  aug_tgt: aug_0 # augmentation for target
+optim_params:
+  learning_rate: 0.01
+  conv_lr_ratio: 0.1 # ratio of learning for convolution layer
+  patience: 4 # patience for early stop
+  batch_size_lbd: 32 # batch size for labeled data
+  batch_size: 64
+  decay: true # use learning rate scheduler
+  weight_decay: 5.e-4
+  cls_update: true # update classifier's weight
+model_params:
+  out_dim: 512 # feature dimension
+  version: pretrain-resnet50 # network to use
+  load_memory_bank: true
+  # APCU hp
+  load_weight: src-tgt
+  load_weight_thres: 5 # threshold to load weight for one class
+  load_weight_epoch: 5 # load after 5 epochs
+loss_params:
+  temp: 0.1 # temparature for ssl
+  thres_src: 0.99 # threshold for source psuedo (for APCU)
+  thres_tgt: 0.99
+  loss: [] # a list of loss
+  # cls-so: supervised loss
+  # proto-each + info: Loss InSelf
+  # I2C-cross: Loss CrossSelf
+  # semi-condentmax + semi-entmin: Loss MIM in source
+  # tgt-condentmax + tgt-ent: Loss MIM in target
+  weight: [] # weight for each loss
+  clus: {} # clustering information
