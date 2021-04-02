@@ -1,6 +1,6 @@
 # Prototypical Cross-domain Self-supervised Learning for Few-shot Unsupervised Domain Adaptation (PCS)
 
-Pytorch implementation of PCS (Prototypical Cross-domain Self-supervised network) [[PDF](_)]
+Pytorch implementation of PCS (Prototypical Cross-domain Self-supervised network) [[Homepage](http://xyue.io/pcs-fuda/)] [[PDF](https://arxiv.org/pdf/2103.16765.pdf)]
 
 ## Overview
 
