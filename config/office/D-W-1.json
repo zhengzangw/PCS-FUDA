@@ -2,21 +2,22 @@
   "seed": 1337,
   "exp_base": "./exps",
   "exp_name": "office",
-  "exp_id": "dslr->amazon",
+  "exp_id": "dslr->webcam",
+  "agent": "CDSAgent",
   "data_params": {
     "name": "office",
     "source": "dslr",
-    "target": "amazon",
+    "target": "webcam",
     "fewshot": "1",
     "aug": "aug_0"
   },
   "num_epochs": 500,
-  "steps_epoch": 100,
+  "steps_epoch": null,
   "optim_params": {
     "learning_rate": 0.01,
     "conv_lr_ratio": 0.1,
     "patience": 4,
-    "batch_size_lbd": 32,
+    "batch_size_lbd": 64,
     "batch_size": 64,
     "decay": true,
     "weight_decay": 5e-4,
@@ -26,8 +27,8 @@
     "out_dim": 512,
     "version": "pretrain-resnet50",
     "load_weight": "src-tgt",
-    "load_weight_thres": 5,
-    "load_weight_epoch": 5
+    "load_weight_thres": 20,
+    "load_weight_epoch": 0
   },
   "loss_params": {
     "thres_src": 0.99,
@@ -42,7 +43,7 @@
       "tgt-condentmax",
       "tgt-entmin"
     ],
-    "weight": [1, 1, 1, 0.05, 0.05, 0.05, 0.05],
+    "weight": [1, 1, 1, 0.5, 0.05, 0.5, 0.05],
     "clus": {
       "kmeans_freq": 1,
       "type": ["each"],

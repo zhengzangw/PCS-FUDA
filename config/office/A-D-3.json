@@ -1,0 +1,54 @@
+{
+  "seed": 1337,
+  "exp_base": "./exps",
+  "exp_name": "office",
+  "exp_id": "amazon->dslr",
+  "agent": "CDSAgent",
+  "data_params": {
+    "name": "office",
+    "source": "amazon",
+    "target": "dslr",
+    "fewshot": "3",
+    "aug": "aug_0"
+  },
+  "num_epochs": 500,
+  "steps_epoch": null,
+  "optim_params": {
+    "learning_rate": 0.01,
+    "conv_lr_ratio": 0.1,
+    "patience": 4,
+    "batch_size_lbd": 64,
+    "batch_size": 64,
+    "decay": true,
+    "weight_decay": 5e-4,
+    "cls_update": true
+  },
+  "model_params": {
+    "out_dim": 512,
+    "version": "pretrain-resnet50",
+    "load_weight": "src-tgt",
+    "load_weight_thres": 10,
+    "load_weight_epoch": 5
+  },
+  "loss_params": {
+    "thres_src": 0.95,
+    "thres_tgt": 0.99,
+    "temp": 0.1,
+    "loss": [
+      "cls-so",
+      "proto-each",
+      "I2C-cross",
+      "semi-condentmax",
+      "semi-entmin",
+      "tgt-condentmax",
+      "tgt-entmin"
+    ],
+    "weight": [1, 1, 1, 0.1, 0.01, 0.1, 0.01],
+    "clus": {
+      "kmeans_freq": 1,
+      "type": ["each"],
+      "n_k": 10,
+      "k": [31, 31, 62]
+    }
+  }
+}

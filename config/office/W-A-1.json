@@ -2,13 +2,13 @@
   "seed": 1337,
   "exp_base": "./exps",
   "exp_name": "office",
-  "exp_id": "amazon->webcam",
+  "exp_id": "webcam->amazon",
   "agent": "CDSAgent",
   "data_params": {
     "name": "office",
-    "source": "amazon",
-    "target": "webcam",
-    "fewshot": "3",
+    "source": "webcam",
+    "target": "amazon",
+    "fewshot": "1",
     "aug": "aug_0"
   },
   "num_epochs": 500,
@@ -17,21 +17,21 @@
     "learning_rate": 0.01,
     "conv_lr_ratio": 0.1,
     "patience": 4,
-    "batch_size_lbd": 32,
+    "batch_size_lbd": 64,
     "batch_size": 64,
     "decay": true,
     "weight_decay": 5e-4,
-    "cls_update": false
+    "cls_update": true
   },
   "model_params": {
     "out_dim": 512,
     "version": "pretrain-resnet50",
     "load_weight": "src-tgt",
-    "load_weight_thres": 10,
-    "load_weight_epoch": 3
+    "load_weight_thres": 50,
+    "load_weight_epoch": 2
   },
   "loss_params": {
-    "thres_src": 0.99,
+    "thres_src": 0.98,
     "thres_tgt": 0.99,
     "temp": 0.1,
     "loss": [

@@ -10,13 +10,11 @@ Architecture of Network
 
 Compared with state-of-the-art methods, PCS improves the mean classification accuracy over different domain pairs on FUDA by **10.5%**, **4.3%**, **9.0%**, and **13.2%** on Office, Office-Home, VisDA-2017, and DomainNet, respectively.
 q
+
 ## Requirements
 
-pytorch==1.5.1
-torchvision==0.6.1
-cuda version 10.2
-
 ```bash
+conda install pytorch==1.5.1 torchvision==0.6.1 cudatoolkit=10.2 -c pytorch
 pip install -r requirements.txt
 pip install -e .
 ```
@@ -27,9 +25,11 @@ pip install -e .
 - To train the model, run following commands:
 
 ```bash
-CUDA_VISIBLE_DEVICES=0,1 python pcs/run.py --config config/office_D-A.json --num 1
-CUDA_VISIBLE_DEVICES=2,3 python pcs/run.py --config config/office_A-W.json --num 3
+CUDA_VISIBLE_DEVICES=0 python pcs/run.py --config config/${DATASET}/${DOMAIN-PAIR}.json
+CUDA_VISIBLE_DEVICES=0,1 python pcs/run.py --config config/office/D-A-1.json
 ```
+
+[2021.06.24] We released all configs for office dataset.
 
 ## Citation
 
